@@ -1,6 +1,9 @@
 {% extends 'base.html.twig' %}
-
-{% block body %}
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('bundles/app/css/jobs.css') }}" type="text/css" media="all" />
+{% endblock %}
+{% block content %}
     <h1>Job creation</h1>
 
     {{ form_start(form) }}

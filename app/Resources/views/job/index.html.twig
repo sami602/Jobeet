@@ -18,8 +18,11 @@
                         </a>
                     </td>
                     <td class="company">{{ entity.company }}</td>
+                    <td> <a href="{{ path('job_edit', { 'id': entity.id})}}">Edit</a></td>
+                    <td><a href ="{{ path('job_note', { 'id': entity.id})}}">Give a mark</a></td>
                 </tr>
             {% endfor %}
         </table>
+        <a href ="{{ path('job_new') }}">Create your job ! </a>
     </div>
 {% endblock %}

@@ -515,4 +515,33 @@ class Job
 
 
 
+    /**
+     * @var integer
+     */
+    private $note;
+
+
+    /**
+     * Set note
+     *
+     * @param integer $note
+     *
+     * @return Job
+     */
+    public function setNote($note)
+    {
+        $this->note = $note;
+
+        return $this;
+    }
+
+    /**
+     * Get note
+     *
+     * @return integer
+     */
+    public function getNote()
+    {
+        return $this->note;
+    }
 }

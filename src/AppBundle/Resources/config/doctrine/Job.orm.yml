@@ -49,6 +49,7 @@ AppBundle\Entity\Job:
             column: is_activated
         note:
             type: integer
+            nullable: true
             options:
             unsigned: true
         email:

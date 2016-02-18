@@ -47,6 +47,10 @@ AppBundle\Entity\Job:
             type: boolean
             nullable: true
             column: is_activated
+        note:
+            type: integer
+            options:
+            unsigned: true
         email:
             type: string
             length: 255

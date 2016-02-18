@@ -2,8 +2,10 @@
 
 namespace AppBundle\Controller;
 
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 
 use AppBundle\Entity\Job;
 use AppBundle\Form\JobType;
@@ -110,7 +112,33 @@ class JobController extends Controller
 
         return $this->redirectToRoute('job_index');
     }
+    /**
+     * Give a mark to a Job entity.
+     *
+     */
+    public function noteAction(Request $request, Job $job){
+        $noteForm = $this -> createFormBuilder($job)
+                          -> add('Note', ChoiceType::class, array('choices' => array(1=>1,2=>2,3=>3,4=>4,5=>5)))
+                          -> add('save',SubmitType::class, array('label' => 'Note this job'))
+                          -> getForm();
+        $noteForm -> handleRequest($request);
+        if ($noteForm->isSubmitted() && $noteForm->isValid()) {
+            $note = $noteForm['Note']->getData();
+            $job->setNote((int)$note);
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($job);
+            $em->flush();
+            $this->addFlash('notice', 'Job marked');
 
+            return $this->redirectToRoute('job_index');
+        }
+        return $this->render('job/note.html.twig', array(
+            'job' => $job,
+            'note_form' => $noteForm->createView()
+        ));
+
+
+    }
     /**
      * Creates a form to delete a Job entity.
      *

@@ -12,7 +12,11 @@
         <h2>{{ job.location }}</h2>
         <h3>
             {{ job.position }}
-            <small> - {{ job.type }}</small>
+            <small> - {{ job.type }}
+                {% if job.note %}
+                -  Mark : {{ job.note}}/5
+                {% endif %}
+            </small>
         </h3>
 
         {% if job.logo %}
@@ -39,6 +43,9 @@
         <div style="padding: 20px 0">
             <a href="{{ path('job_edit', { 'id': job.id }) }}">
                 Edit
+            </a>
+            <a href="{{ path('job_note', { 'id': job.id }) }}">
+                Note
             </a>
         </div>
     </div>

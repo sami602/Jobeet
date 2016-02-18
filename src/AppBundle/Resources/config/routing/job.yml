@@ -20,6 +20,11 @@ job_edit:
     defaults: { _controller: "AppBundle:Job:edit" }
     methods:  [GET, POST]
 
+job_note:
+    path:   /{id}/note
+    defaults: { _controller:"AppBundle:Job:note"}
+    methods: [GET, POST]
+
 job_delete:
     path:     /{id}/delete
     defaults: { _controller: "AppBundle:Job:delete" }

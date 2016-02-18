@@ -14,6 +14,7 @@ use AppBundle\Form\JobType;
  */
 class JobController extends Controller
 {
+
     /**
      * Lists all Job entities.
      *

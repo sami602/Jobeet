@@ -3,7 +3,7 @@
 namespace AppBundle\Entity;
 
 /**
- * Job
+ * job
  */
 class Job
 {
@@ -380,29 +380,7 @@ class Job
     {
         return $this->email;
     }
-    /**
-     * Set createdAt
-     *
-     * @param \DateTime $createdAt
-     *
-     * @return Job
-     */
-    public function setCreatedAt($createdAt)
-    {
-        $this->createdAt = $createdAt;
 
-        return $this;
-    }
-
-    /**
-     * Get createdAt
-     *
-     * @return \DateTime
-     */
-    public function getCreatedAt()
-    {
-        return $this->createdAt;
-    }
     /**
      * Set expiresAt
      *
@@ -479,7 +457,9 @@ class Job
     {
         return $this->category;
     }
-
+    /**
+     * @ORM\PrePersist
+     */
     public function setCreatedAtValue()
     {
         if(!$this->getCreatedAt())
@@ -488,16 +468,11 @@ class Job
         }
     }
 
-
+    /**
+     * @ORM\PreUpdate
+     */
     public function setUpdatedAtValue()
     {
         $this->updated_at = new \DateTime();
     }
-    /**
-     * @var \DateTime
-     */
-    private $createdAt;
-
-
-
 }

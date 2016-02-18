@@ -1,7 +1,7 @@
-AppBundle\Entity\job:
+AppBundle\Entity\Job:
     type: entity
-    table: job
-    repositoryClass: AppBundle\Repository\jobRepository
+    table: Job
+    repositoryClass: AppBundle\Repository\JobRepository
     id:
         id:
             type: integer
@@ -50,6 +50,8 @@ AppBundle\Entity\job:
         email:
             type: string
             length: 255
+        createdAt:
+            type: datetime
         expiresAt:
             type: datetime
             column: expires_at
@@ -60,7 +62,7 @@ AppBundle\Entity\job:
     manyToOne:
         category:
          targetEntity: Category
-         inversedBy: jobs
+         inversedBy: Jobs
          joinColumn:
           name: category_id
           referencedColumnName: id
